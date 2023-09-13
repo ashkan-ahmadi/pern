@@ -1,5 +1,5 @@
 const env = require('./env.json')
-const pg = require('pg')
+const Pool = require('pg').Pool
 
 const pool = new Pool({
   user: env?.db?.user,
