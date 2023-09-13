@@ -58,5 +58,17 @@ router.get('/todos/:id', async (req, res) => {
 /* UPDATE a todo */
 
 /* DELETE a todo */
+router.delete('/todos/:id', async (req, res) => {
+  try {
+    const { id } = req.params // this must match whatever you put as dynamic route
+    const todo = await pool.query('DELETE FROM todo WHERE todo_id = $1', [id])
 
+    res.status(200).json({
+      success: true,
+      count: todo?.rowCount,
+    })
+  } catch (error) {
+    console.error(error.message)
+  }
+})
 module.exports = router
