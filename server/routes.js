@@ -26,6 +26,18 @@ router.post('/todos', async (req, res) => {
 
 /* GET all todos */
 
+router.get('/todos', async (req, res) => {
+  try {
+    const todos = await pool.query('SELECT * from todo')
+
+    res.status(200).json({
+      success: true,
+      ...todos,
+    })
+  } catch (error) {
+    console.error(error.message)
+  }
+})
 /* GET a todo */
 
 /* UPDATE a todo */
