@@ -1,0 +1,11 @@
+{
+  "mode": "development",
+  "port": 5000,
+  "db": {
+    "user": "",
+    "password": "",
+    "host": "",
+    "port": 5432,
+    "database": ""
+  }
+}
