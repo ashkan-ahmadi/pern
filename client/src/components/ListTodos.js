@@ -14,8 +14,8 @@ const ListTodos = props => {
         </thead>
         <tbody>
           {todos.map(todo => (
-            <tr key={todo.todo_id}>
-              <th scope="row">{todo.todo_id}</th>
+            <tr key={todo.id}>
+              <th scope="row">{todo.id}</th>
               <td>{todo.description}</td>
               <td>
                 <button className="btn">EDIT</button>
