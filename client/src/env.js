@@ -1,9 +1,7 @@
 const env = {
   mode: 'development',
   port: 3000,
-  api: {
-    host: 'http://',
-  },
+  api: {},
 }
 
 env.api.port = 5000
