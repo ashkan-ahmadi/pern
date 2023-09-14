@@ -16,7 +16,7 @@ router.post('/todos', async (req, res) => {
       return // have to include return. res.status.... does not kill the rest of the script
     }
 
-    const newTodo = await pool.query('INSERT INTO todo (description) VALUES ($1) RETURNING todo_id, description', [description])
+    const newTodo = await pool.query('INSERT INTO todos (description) VALUES ($1) RETURNING id, description', [description])
 
     res.status(201).json({
       success: true,
@@ -31,7 +31,7 @@ router.post('/todos', async (req, res) => {
 /* GET all todos */
 router.get('/todos', async (req, res) => {
   try {
-    const todos = await pool.query('SELECT * from todo')
+    const todos = await pool.query('SELECT * from todos')
 
     res.status(200).json({
       success: true,
@@ -58,7 +58,7 @@ router.get('/todos/:id', async (req, res) => {
       return // have to include return. res.status.... does not kill the rest of the script
     }
 
-    const todo = await pool.query('SELECT * FROM todo WHERE todo_id = $1', [id])
+    const todo = await pool.query('SELECT * FROM todos WHERE id = $1', [id])
 
     res.status(200).json({
       success: true,
@@ -93,7 +93,7 @@ router.put('/todos/:id', async (req, res) => {
       })
       return // have to include return. res.status.... does not kill the rest of the script
     }
-    const todo = await pool.query('UPDATE todo SET description=$1 WHERE todo_id = $2 RETURNING *', [description, id])
+    const todo = await pool.query('UPDATE todos SET description=$1 WHERE id = $2 RETURNING *', [description, id])
 
     res.status(200).json({
       success: true,
@@ -119,7 +119,7 @@ router.delete('/todos/:id', async (req, res) => {
       return // have to include return. res.status.... does not kill the rest of the script
     }
 
-    const todo = await pool.query('DELETE FROM todo WHERE todo_id = $1 RETURNING *', [id])
+    const todo = await pool.query('DELETE FROM todos WHERE id = $1 RETURNING *', [id])
 
     res.status(200).json({
       success: true,
