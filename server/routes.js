@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const pool = require('./db')
+const pool = require('./db/Pool')
 
 /* CREATE a new todo */
 router.post('/todos', async (req, res) => {
